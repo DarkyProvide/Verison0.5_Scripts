@@ -1,24 +1,52 @@
-def new_func_search_text_in_progress(s1, s2):
+import re
 
-    result = 0
-    s2_to = s2
+errors = 0
 
-    for i in s1:
-        if i in s2_to:
-            s2_to = s2_to.replace(i, '', 1)
-            result += 1
+def detranslated(value):
 
-    r1 = int(result / len(s1) * 100)
-    r2 = int(result / len(s2) * 100)
+    value = value + ')))' if errors > 3 else value
 
-    return r1 if r1 < r2 else r2
+    print(value)
 
 
-s1 = 'hellow'
+pattern = {
 
-s2 = input('_').lower()
-ref = new_func_search_text_in_progress(s1, s2)
-if ref >= 50:
-    print('Hi!')
-else:
-    print(str(ref) + '%')
+    r'spam':'print exit',
+    r'exit':'print spam',
+
+}
+
+while True:
+
+    a = input('\nexit?: ').lower()
+
+    n1 = 0
+
+    try:
+
+        while True:
+
+            keyApp = list(pattern.keys())[n1]
+            valueApp = list(pattern.values())[n1]
+            match = re.search(keyApp, a)
+
+            if not match:
+
+                n1 += 1
+
+            else:
+
+                if match:
+
+                    if match.start() <= 5:
+
+                        errors += 1
+                        detranslated(valueApp); break
+
+                    else:
+
+                        print('I don\'t understand you!'); break
+
+
+    except IndexError:
+       print('NONONONO, spam or exit!')

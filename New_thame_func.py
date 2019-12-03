@@ -5,7 +5,7 @@ def new_func_search_text_in_progress(s1, s2):
 
     for i in s1:
         if i in s2_to:
-            s2_to = s2_to.replace(char, '', 1)
+            s2_to = s2_to.replace(i, '', 1)
             result += 1
 
     r1 = int(result / len(s1) * 100)
@@ -13,8 +13,8 @@ def new_func_search_text_in_progress(s1, s2):
 
     return '{}%'.format(r1 if r1 < r2 else r2)
 
-s1 = 'Hellow'
 
-while True:
-    s2 = input('_')
-    new_func_search_text_in_progress(s1, s2)
+s1 = 'hellow'
+
+s2 = input('_').lower()
+print(new_func_search_text_in_progress(s1, s2))

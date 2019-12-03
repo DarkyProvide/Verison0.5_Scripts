@@ -20,3 +20,5 @@ s2 = input('_').lower()
 ref = new_func_search_text_in_progress(s1, s2)
 if ref >= 50:
     print('Hi!')
+else:
+    print(str(ref) + '%')

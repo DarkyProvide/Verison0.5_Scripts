@@ -11,10 +11,12 @@ def new_func_search_text_in_progress(s1, s2):
     r1 = int(result / len(s1) * 100)
     r2 = int(result / len(s2) * 100)
 
-    return '{}%'.format(r1 if r1 < r2 else r2)
+    return r1 if r1 < r2 else r2
 
 
 s1 = 'hellow'
 
 s2 = input('_').lower()
-print(new_func_search_text_in_progress(s1, s2))
+ref = new_func_search_text_in_progress(s1, s2)
+if ref >= 50:
+    print('Hi!')

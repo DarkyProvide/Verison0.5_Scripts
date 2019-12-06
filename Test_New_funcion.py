@@ -1,20 +1,49 @@
-import random as rad
+#import random as rad  --  For Maching II
 # int()
 # str()
-# masiv[a, b, c, d, ... 1, 2, 3, 4, ... !, @, #, $, %, ..]
 
-ListNumbers = [3, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-ListNumbers.sort()
+alPhaBet = []
 
+ListNumbers = [0]
+
+# 1, 2, 3, 4, ... ====> (int)
 def podbor(number):
 
     zero = 0
+    lowSort = 0
+
+    while lowSort != max(list(ListNumbers)):
+
+        if lowSort not in ListNumbers:
+
+            ListNumbers.append(lowSort)
+
+        lowSort += 1
+
+    ListNumbers.sort()
 
     while zero != number:
 
         ListNumbers.append(max(list(ListNumbers)) + 1)
 
         zero += 1
+
+# a, b, c, d, ... !, @, #, $, %, ... ====> (str)
+def speakAlphabet(speak):
+
+    for i in speak:
+
+        if i not in alPhaBet:
+
+            try:
+
+                if int(i) not in ListNumbers:
+                    ListNumbers.append(int(i))
+                    ListNumbers.sort()
+
+            except ValueError or TypeError:
+
+                alPhaBet.append(i)
 
 while True:
 
@@ -28,27 +57,37 @@ while True:
         # commands
         if command[0] == 'start':
 
-            if command[1] == 'num':
+            if command[1]:
 
-                if command[2]:
+                if command[1] == 'num':
 
-                    theRashNumber = int(command[2])
-                    podbor(theRashNumber)
+                    if command[2]:
 
+                        podbor(int(command[2]))
+
+                    else:
+                        print('print your number')
+
+                elif command[1] == 'alphabet':
+
+                    speak = input('Letter the text: ')
+                    speakAlphabet(speak)
 
                 else:
-                    print('print your number')
-
-            #elif ...
+                    print('num')
 
             else:
-                print('num')
+                print('num | alphabet')
 
         elif command[0] == 'progress':
-            print(ListNumbers)
+
+            print('ListNumbers:', ListNumbers)
+            print('alPhaBet:', alPhaBet)
 
         elif command[0] == 'exit':
+
+            print('End and Delete all data')
             quit()
 
         else:
-            print('print start > num > !>NUMBER<!')
+            print('print start >> alphabet | num >> !>NUMBER<! | !>TEXT<!')

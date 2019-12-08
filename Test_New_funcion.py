@@ -1,10 +1,12 @@
-#import random as rad  --  For Maching II
+import random as rad
 # int()
 # str()
 
 alPhaBet = []
 
 ListNumbers = [0]
+
+listIIWorkWithNumbers = []
 
 # 1, 2, 3, 4, ... ====> (int)
 def podbor(number):
@@ -45,6 +47,81 @@ def speakAlphabet(speak):
 
                 alPhaBet.append(i)
 
+def givWithOperatorsDo():
+
+    azartRandom = 1
+
+    nummy = rad.randint(1, 10000)
+
+    if nummy >= 9000:
+
+        azartRandom -= nummy * 0.001
+
+    elif nummy <= 1000:
+
+        azartRandom -= nummy * 0.00001
+
+    elif nummy >= 1000 and nummy <= 9000:
+
+        azartRandom -= nummy * 0.0001
+
+    else:
+
+        azartRandom -= nummy * 0.0000001
+
+    if azartRandom >= 0.5:
+
+        i = 0
+        i1 = 0
+
+        print(len(list(ListNumbers)))
+
+        while i < len(list(ListNumbers)) - 1:
+
+            a = ListNumbers[i]
+
+            if i < 1 - len(list(ListNumbers)):
+
+                b = ListNumbers[(i + 1)]
+
+            else:
+
+                b = 0
+
+            randa = rad.randint(0, 3)
+
+            # +, -, *, /
+            if randa == 0:
+
+                listIIWorkWithNumbers.append(a + b)
+
+            elif randa == 1:
+
+                listIIWorkWithNumbers.append(a - b)
+
+            elif randa == 2:
+
+                listIIWorkWithNumbers.append(a * b)
+
+            else:
+
+                try:
+
+                    listIIWorkWithNumbers.append(a / b)
+
+                except ZeroDivisionError:
+
+                    listIIWorkWithNumbers.append(a / 1)
+
+        i += 1
+
+        listIIWorkWithNumbers.sort()
+
+    else:
+
+        pass
+
+
 while True:
 
     a = input('~>')
@@ -73,6 +150,10 @@ while True:
                     speak = input('Letter the text: ')
                     speakAlphabet(speak)
 
+                elif command[1] == 'runIntStrNum':
+
+                    givWithOperatorsDo()
+
                 else:
                     print('num')
 
@@ -83,6 +164,7 @@ while True:
 
             print('ListNumbers:', ListNumbers)
             print('alPhaBet:', alPhaBet)
+            print('listIIWorkWithNumbers', listIIWorkWithNumbers)
 
         elif command[0] == 'exit':
 

@@ -69,18 +69,17 @@ def givWithOperatorsDo():
 
         azartRandom -= nummy * 0.0000001
 
-    if azartRandom >= 0.5:
+    if azartRandom >= 0.5:  # nums
 
         i = 0
-        i1 = 0
 
         print(len(list(ListNumbers)))
 
-        while i < len(list(ListNumbers)) - 1:
+        while i != len(list(ListNumbers)):
 
             a = ListNumbers[i]
 
-            if i < 1 - len(list(ListNumbers)):
+            if i < len(list(ListNumbers)):
 
                 b = ListNumbers[(i + 1)]
 
@@ -93,33 +92,33 @@ def givWithOperatorsDo():
             # +, -, *, /
             if randa == 0:
 
-                listIIWorkWithNumbers.append(a + b)
+                listIIWorkWithNumbers.append((a, '+', b, '=', (a + b)))
 
             elif randa == 1:
 
-                listIIWorkWithNumbers.append(a - b)
+                listIIWorkWithNumbers.append((a, '-', b, '=', (a - b)))
 
             elif randa == 2:
 
-                listIIWorkWithNumbers.append(a * b)
+                listIIWorkWithNumbers.append((a, '*', b, '=', (a * b)))
 
             else:
 
                 try:
 
-                    listIIWorkWithNumbers.append(a / b)
+                    listIIWorkWithNumbers.append((a, '/', b, '=', (a / b)))
 
                 except ZeroDivisionError:
 
-                    listIIWorkWithNumbers.append(a / 1)
-
-        i += 1
+                    listIIWorkWithNumbers.append((a, '/ 1 =', (a / 1)))
 
         listIIWorkWithNumbers.sort()
 
+        i += 1
+
     else:
 
-        pass
+        pass  # text
 
 
 while True:
@@ -150,7 +149,7 @@ while True:
                     speak = input('Letter the text: ')
                     speakAlphabet(speak)
 
-                elif command[1] == 'runIntStrNum':
+                elif command[1] == 'runIntStr':
 
                     givWithOperatorsDo()
 
@@ -172,4 +171,4 @@ while True:
             quit()
 
         else:
-            print('print start >> alphabet | num >> !>NUMBER<! | !>TEXT<!')
+            print('print start >> alphabet | num | runIntStr >> !>NUMBER<! | !>TEXT<!')

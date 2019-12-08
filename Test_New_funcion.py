@@ -47,6 +47,7 @@ def speakAlphabet(speak):
 
                 alPhaBet.append(i)
 
+# Operators doing  --  remark infinity while!
 def givWithOperatorsDo():
 
     azartRandom = 1

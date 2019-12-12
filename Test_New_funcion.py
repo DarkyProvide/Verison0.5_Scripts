@@ -8,6 +8,8 @@ ListNumbers = [0]
 
 listIIWorkWithNumbers = []
 
+listIIWorkWithAlphabet = []
+
 
 #  do insort numbers (+, -, *, / on numbers) --> using in givWithOperatorsDo <--
 def sortPodbProgramm():
@@ -60,7 +62,6 @@ def sortPodbProgramm():
                     print(a / 1)
 
         i += 1
-
 
 #  big random
 def bigRandom(azartRandom):
@@ -123,7 +124,7 @@ def speakAlphabet(speak):
 
                 alPhaBet.append(i)
 
-# Operators doing  --  remark infinity while!
+# Operators doing
 def givWithOperatorsDo():
 
     azartRandomaizer = 1
@@ -132,18 +133,33 @@ def givWithOperatorsDo():
 
     if azartRandom >= 0.5:  # nums
 
-        print(len(list(ListNumbers)))
-
         sortPodbProgramm()
 
     else:  # text alphabet program sort
 
-        pass
+        if alPhaBet:
+
+            q = 0
+
+            while q != len(list(alPhaBet)):
+
+                i = 0
+
+                while i != len(list(alPhaBet)):
+
+                    First = list(alPhaBet)[q]
+                    Second = list(alPhaBet)[i]
+
+                    listIIWorkWithAlphabet.append(First + Second)
+
+                    i += 1
+
+                q += 1
 
 
 while True:
 
-    a = input('~>')
+    a = input('\n~>')
 
     if a:
 
@@ -184,6 +200,7 @@ while True:
             print('ListNumbers:', ListNumbers)
             print('alPhaBet:', alPhaBet)
             print('listIIWorkWithNumbers', listIIWorkWithNumbers)
+            print('listIIWorkWithAlphabet', listIIWorkWithAlphabet)
 
         elif command[0] == 'exit':
 

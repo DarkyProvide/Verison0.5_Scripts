@@ -41,7 +41,7 @@ def sortPodbProgramm():
 
             print(a * b)
 
-        else:
+        elif randa == 3:
 
             try:
 
@@ -59,7 +59,7 @@ def sortPodbProgramm():
 
                     print(a / 1)
 
-    i += 1
+        i += 1
 
 
 #  big random

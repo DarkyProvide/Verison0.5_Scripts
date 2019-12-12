@@ -8,6 +8,82 @@ ListNumbers = [0]
 
 listIIWorkWithNumbers = []
 
+
+#  do insort numbers (+, -, *, / on numbers) --> using in givWithOperatorsDo <--
+def sortPodbProgramm():
+
+    i = 0
+
+    while i != (len(list(ListNumbers)) - 1):
+
+        a = ListNumbers[i]
+
+        b = ListNumbers[(i + 1)]
+
+        randa = rad.randint(0, 3)
+
+        # +, -, *, /
+        if randa == 0 and ('+' + str(a + b)) not in list(listIIWorkWithNumbers):
+
+            listIIWorkWithNumbers.append('+' + str(a + b))
+
+            print(a + b)
+
+        elif randa == 1 and ('-' + str(a - b)) not in list(listIIWorkWithNumbers):
+
+            listIIWorkWithNumbers.append('-' + str(a - b))
+
+            print(a - b)
+
+        elif randa == 2 and ('*' + str(a * b)) not in list(listIIWorkWithNumbers):
+
+            listIIWorkWithNumbers.append('*' + str(a * b))
+
+            print(a * b)
+
+        else:
+
+            try:
+
+                if ('/' + str(a / b)) not in list(listIIWorkWithNumbers):
+
+                    listIIWorkWithNumbers.append('/' + str(a / b))
+
+                    print(a / b)
+
+            except ZeroDivisionError:
+
+                if ('/' + str(a / 1)) not in list(listIIWorkWithNumbers):
+
+                    listIIWorkWithNumbers.append('/' + str(a / 1))
+
+                    print(a / 1)
+
+    i += 1
+
+
+#  big random
+def bigRandom(azartRandom):
+    nummy = rad.randint(1, 10000)
+
+    if nummy >= 9000:
+
+        azartRandom -= nummy * 0.001
+
+    elif nummy <= 1000:
+
+        azartRandom -= nummy * 0.00001
+
+    elif nummy >= 1000 and nummy <= 9000:
+
+        azartRandom -= nummy * 0.0001
+
+    else:
+
+        azartRandom -= nummy * 0.0000001
+
+    return azartRandom
+
 # 1, 2, 3, 4, ... ====> (int)
 def podbor(number):
 
@@ -50,76 +126,19 @@ def speakAlphabet(speak):
 # Operators doing  --  remark infinity while!
 def givWithOperatorsDo():
 
-    azartRandom = 1
+    azartRandomaizer = 1
 
-    nummy = rad.randint(1, 10000)
-
-    if nummy >= 9000:
-
-        azartRandom -= nummy * 0.001
-
-    elif nummy <= 1000:
-
-        azartRandom -= nummy * 0.00001
-
-    elif nummy >= 1000 and nummy <= 9000:
-
-        azartRandom -= nummy * 0.0001
-
-    else:
-
-        azartRandom -= nummy * 0.0000001
+    azartRandom = bigRandom(azartRandomaizer)
 
     if azartRandom >= 0.5:  # nums
 
-        i = 0
-
         print(len(list(ListNumbers)))
 
-        while i != len(list(ListNumbers)):
+        sortPodbProgramm()
 
-            a = ListNumbers[i]
+    else:  # text alphabet program sort
 
-            if i < len(list(ListNumbers)):
-
-                b = ListNumbers[(i + 1)]
-
-            else:
-
-                b = 0
-
-            randa = rad.randint(0, 3)
-
-            # +, -, *, /
-            if randa == 0:
-
-                listIIWorkWithNumbers.append((a, '+', b, '=', (a + b)))
-
-            elif randa == 1:
-
-                listIIWorkWithNumbers.append((a, '-', b, '=', (a - b)))
-
-            elif randa == 2:
-
-                listIIWorkWithNumbers.append((a, '*', b, '=', (a * b)))
-
-            else:
-
-                try:
-
-                    listIIWorkWithNumbers.append((a, '/', b, '=', (a / b)))
-
-                except ZeroDivisionError:
-
-                    listIIWorkWithNumbers.append((a, '/ 1 =', (a / 1)))
-
-        listIIWorkWithNumbers.sort()
-
-        i += 1
-
-    else:
-
-        pass  # text
+        pass
 
 
 while True:

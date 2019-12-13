@@ -1,6 +1,4 @@
 import random as rad
-# int()
-# str()
 
 alPhaBet = []
 
@@ -141,18 +139,89 @@ def givWithOperatorsDo():
 
             q = 0
 
+            progressssesd = 0
+            progresssesd = 0
+            progressesd = 0
+
             while q != len(list(alPhaBet)):
 
                 i = 0
 
+                #  2
                 while i != len(list(alPhaBet)):
 
                     First = list(alPhaBet)[q]
                     Second = list(alPhaBet)[i]
 
-                    listIIWorkWithAlphabet.append(First + Second)
+                    if (First + Second) not in list(listIIWorkWithAlphabet):
+                        listIIWorkWithAlphabet.append(First + Second)
+
+                    if progressesd == 100:
+                        progressesd = 0
+                        print('.', end='')
+
+                    progressesd += 1
 
                     i += 1
+
+                d = 0
+
+                #  3
+                while d != len(list(alPhaBet)):
+
+                    i = 0
+
+                    while i != len(list(alPhaBet)):
+
+                        First = list(alPhaBet)[q]
+                        Second = list(alPhaBet)[i]
+                        Third = list(alPhaBet)[d]
+
+                        if (First + Second + Third) not in list(listIIWorkWithAlphabet):
+                            listIIWorkWithAlphabet.append(First + Second + Third)
+
+                        if progresssesd == 1000:
+                            progresssesd = 0
+                            print('.', end='')
+
+                        progresssesd += 1
+
+                        i += 1
+
+                    d += 1
+
+                e = 0
+
+                #  4
+                while e != len(list(alPhaBet)):
+
+                    d = 0
+
+                    while d != len(list(alPhaBet)):
+
+                        i = 0
+
+                        while i != len(list(alPhaBet)):
+
+                            First = list(alPhaBet)[q]
+                            Second = list(alPhaBet)[i]
+                            Third = list(alPhaBet)[d]
+                            Fourth = list(alPhaBet)[e]
+
+                            if (First + Second + Third + Fourth) not in list(listIIWorkWithAlphabet):
+                                listIIWorkWithAlphabet.append(First + Second + Third + Fourth)
+
+                            if progressssesd == 10000:
+                                progressssesd = 0
+                                print('.', end='')
+
+                            progressssesd += 1
+
+                            i += 1
+
+                        d += 1
+
+                    e += 1
 
                 q += 1
 
@@ -195,6 +264,18 @@ while True:
             else:
                 print('num | alphabet')
 
+        elif command[0] == 'look':
+
+            if command[1]:
+
+                if command[1] in list(listIIWorkWithAlphabet):
+
+                    print(command[1], 'in listIIWorkWithAlphabet')
+
+            else:
+
+                print('Text < 5 letters')
+
         elif command[0] == 'progress':
 
             print('ListNumbers:', ListNumbers)
@@ -208,4 +289,4 @@ while True:
             quit()
 
         else:
-            print('print start >> alphabet | num | runIntStr >> !>NUMBER<! | !>TEXT<!')
+            print('print start >> alphabet | num | runIntStr | look >> !>NUMBER<! | !>TEXT<!')

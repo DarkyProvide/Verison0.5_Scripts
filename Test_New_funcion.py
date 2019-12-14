@@ -122,7 +122,7 @@ def speakAlphabet(speak):
 
                 alPhaBet.append(i)
 
-# Operators doing
+# Operators doing (int and str)
 def givWithOperatorsDo():
 
     azartRandomaizer = 1

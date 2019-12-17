@@ -139,89 +139,65 @@ def givWithOperatorsDo():
 
             q = 0
 
-            progressssesd = 0
-            progresssesd = 0
             progressesd = 0
 
             while q != len(list(alPhaBet)):
 
-                i = 0
+                ac = 0
 
-                #  2
-                while i != len(list(alPhaBet)):
+                First = list(alPhaBet)[q]
 
-                    First = list(alPhaBet)[q]
-                    Second = list(alPhaBet)[i]
+                while ac != len(list(alPhaBet)):
 
+                    e = 0
+
+                    Second = list(alPhaBet)[ac]
+
+                    #  2
                     if (First + Second) not in list(listIIWorkWithAlphabet):
                         listIIWorkWithAlphabet.append(First + Second)
 
-                    if progressesd == 100:
-                        progressesd = 0
-                        print('.', end='')
+                    while e != len(list(alPhaBet)):
 
-                    progressesd += 1
+                        d = 0
 
-                    i += 1
+                        Third = list(alPhaBet)[e]
 
-                d = 0
-
-                #  3
-                while d != len(list(alPhaBet)):
-
-                    i = 0
-
-                    while i != len(list(alPhaBet)):
-
-                        First = list(alPhaBet)[q]
-                        Second = list(alPhaBet)[i]
-                        Third = list(alPhaBet)[d]
-
+                        #  3
                         if (First + Second + Third) not in list(listIIWorkWithAlphabet):
                             listIIWorkWithAlphabet.append(First + Second + Third)
 
-                        if progresssesd == 1000:
-                            progresssesd = 0
-                            print('.', end='')
+                        while d != len(list(alPhaBet)):
 
-                        progresssesd += 1
+                            i = 0
 
-                        i += 1
+                            Fourth = list(alPhaBet)[d]
 
-                    d += 1
-
-                e = 0
-
-                #  4
-                while e != len(list(alPhaBet)):
-
-                    d = 0
-
-                    while d != len(list(alPhaBet)):
-
-                        i = 0
-
-                        while i != len(list(alPhaBet)):
-
-                            First = list(alPhaBet)[q]
-                            Second = list(alPhaBet)[i]
-                            Third = list(alPhaBet)[d]
-                            Fourth = list(alPhaBet)[e]
-
+                            #  4
                             if (First + Second + Third + Fourth) not in list(listIIWorkWithAlphabet):
                                 listIIWorkWithAlphabet.append(First + Second + Third + Fourth)
 
-                            if progressssesd == 10000:
-                                progressssesd = 0
-                                print('.', end='')
+                            while i != len(list(alPhaBet)):
 
-                            progressssesd += 1
+                                Fifth = list(alPhaBet)[i]
 
-                            i += 1
+                                #  5
+                                if (First + Second + Third + Fourth + Fifth) not in list(listIIWorkWithAlphabet):
+                                    listIIWorkWithAlphabet.append(First + Second + Third + Fourth + Fifth)
 
-                        d += 1
+                                if progressesd == 100:
+                                    progressesd = 0
+                                    print('.', end='')
 
-                    e += 1
+                                progressesd += 1
+
+                                i += 1
+
+                            d += 1
+
+                        e += 1
+
+                    ac += 1
 
                 q += 1
 

@@ -251,6 +251,10 @@ while True:
 
                     print(command[1], 'in listIIWorkWithAlphabet')
 
+                elif command[1] in list(alPhaBet):
+
+                    print(command[1], 'in alPhaBet')
+
             else:
 
                 print('Text < 5 letters')

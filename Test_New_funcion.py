@@ -1,5 +1,14 @@
 import random as rad
 
+'''
+Это первая часть - распределитель. В этой части вводятся слова,
+а программа их обрабатывает на низком уровне (мелкая обработка
+событий) - простое сложение букв из ввода пользователя и рандомные
+математические вычисления над числами данные пользователем, и
+составленным споском-помошником. Буквы составляются со всеми
+возможными способами до максимума - 8 букв. 
+'''
+
 alPhaBet = []
 
 ListNumbers = [0]
@@ -8,58 +17,6 @@ listIIWorkWithNumbers = []
 
 listIIWorkWithAlphabet = []
 
-
-#  do insort numbers (+, -, *, / on numbers) --> using in givWithOperatorsDo <--
-def sortPodbProgramm():
-
-    i = 0
-
-    while i != (len(list(ListNumbers)) - 1):
-
-        a = ListNumbers[i]
-
-        b = ListNumbers[(i + 1)]
-
-        randa = rad.randint(0, 3)
-
-        # +, -, *, /
-        if randa == 0 and ('+' + str(a + b)) not in list(listIIWorkWithNumbers):
-
-            listIIWorkWithNumbers.append('+' + str(a + b))
-
-            print(a + b)
-
-        elif randa == 1 and ('-' + str(a - b)) not in list(listIIWorkWithNumbers):
-
-            listIIWorkWithNumbers.append('-' + str(a - b))
-
-            print(a - b)
-
-        elif randa == 2 and ('*' + str(a * b)) not in list(listIIWorkWithNumbers):
-
-            listIIWorkWithNumbers.append('*' + str(a * b))
-
-            print(a * b)
-
-        elif randa == 3:
-
-            try:
-
-                if ('/' + str(a / b)) not in list(listIIWorkWithNumbers):
-
-                    listIIWorkWithNumbers.append('/' + str(a / b))
-
-                    print(a / b)
-
-            except ZeroDivisionError:
-
-                if ('/' + str(a / 1)) not in list(listIIWorkWithNumbers):
-
-                    listIIWorkWithNumbers.append('/' + str(a / 1))
-
-                    print(a / 1)
-
-        i += 1
 
 #  big random
 def bigRandom(azartRandom):
@@ -115,6 +72,7 @@ def speakAlphabet(speak):
             try:
 
                 if int(i) not in ListNumbers:
+
                     ListNumbers.append(int(i))
                     ListNumbers.sort()
 
@@ -125,29 +83,61 @@ def speakAlphabet(speak):
 # Operators doing (int and str)
 def givWithOperatorsDo():
 
-    azartRandomaizer = 1
+    azartRandom = bigRandom(1)
 
-    azartRandom = bigRandom(azartRandomaizer)
+    #  nums
+    if azartRandom >= 0.5:
 
-    if azartRandom >= 0.5:  # nums
+        for i in range(len(list(ListNumbers)) - 1):
 
-        sortPodbProgramm()
+            a = ListNumbers[i]
 
-    else:  # text alphabet program sort
+            b = ListNumbers[(i + 1)]
+
+            randa = rad.randint(0, 3)
+
+            # +, -, *, /
+            if randa == 0 and (a + b) not in list(listIIWorkWithNumbers):
+
+                listIIWorkWithNumbers.append(a + b)
+
+            elif randa == 1 and (a - b) not in list(listIIWorkWithNumbers):
+
+                listIIWorkWithNumbers.append(a - b)
+
+            elif randa == 2 and (a * b) not in list(listIIWorkWithNumbers):
+
+                listIIWorkWithNumbers.append(a * b)
+
+            elif randa == 3:
+
+                try:
+
+                    if (a / b) not in list(listIIWorkWithNumbers):
+                        listIIWorkWithNumbers.append(a / b)
+
+                except ZeroDivisionError:
+
+                    if (a / 1) not in list(listIIWorkWithNumbers):
+                        listIIWorkWithNumbers.append(a / 1)
+
+    #  text
+    else:
 
         if alPhaBet:
 
             q = 0
 
             progressesd = 0
+            progsws = 0
 
-            while q != len(list(alPhaBet)):
+            for q in range(len(list(alPhaBet))):
 
                 ac = 0
 
                 First = list(alPhaBet)[q]
 
-                while ac != len(list(alPhaBet)):
+                for ac in range(len(list(alPhaBet))):
 
                     e = 0
 
@@ -157,7 +147,7 @@ def givWithOperatorsDo():
                     if (First + Second) not in list(listIIWorkWithAlphabet):
                         listIIWorkWithAlphabet.append(First + Second)
 
-                    while e != len(list(alPhaBet)):
+                    for e in range(len(list(alPhaBet))):
 
                         d = 0
 
@@ -167,7 +157,7 @@ def givWithOperatorsDo():
                         if (First + Second + Third) not in list(listIIWorkWithAlphabet):
                             listIIWorkWithAlphabet.append(First + Second + Third)
 
-                        while d != len(list(alPhaBet)):
+                        for d in range(len(list(alPhaBet))):
 
                             i = 0
 
@@ -177,7 +167,7 @@ def givWithOperatorsDo():
                             if (First + Second + Third + Fourth) not in list(listIIWorkWithAlphabet):
                                 listIIWorkWithAlphabet.append(First + Second + Third + Fourth)
 
-                            while i != len(list(alPhaBet)):
+                            for i in range(len(list(alPhaBet))):
 
                                 Fifth = list(alPhaBet)[i]
 
@@ -185,22 +175,36 @@ def givWithOperatorsDo():
                                 if (First + Second + Third + Fourth + Fifth) not in list(listIIWorkWithAlphabet):
                                     listIIWorkWithAlphabet.append(First + Second + Third + Fourth + Fifth)
 
-                                if progressesd == 100:
-                                    progressesd = 0
-                                    print('.', end='')
+                                for tq in range(len(list(alPhaBet))):
 
-                                progressesd += 1
+                                    Sixth = list(alPhaBet)[tq]
 
-                                i += 1
+                                    #  6
+                                    if (First + Second + Third + Fourth + Fifth + Sixth) not in list(listIIWorkWithAlphabet):
+                                        listIIWorkWithAlphabet.append(First + Second + Third + Fourth + Fifth + Sixth)
 
-                            d += 1
+                                        for ts in range(len(list(alPhaBet))):
 
-                        e += 1
+                                            Seventh = list(alPhaBet)[ts]
 
-                    ac += 1
+                                            #  7
+                                            if (First + Second + Third + Fourth + Fifth + Sixth + Seventh) not in list(listIIWorkWithAlphabet):
+                                                listIIWorkWithAlphabet.append(First + Second + Third + Fourth + Fifth + Sixth + Seventh)
 
-                q += 1
+                                                for td in range(len(list(alPhaBet))):
 
+                                                    Eighth = list(alPhaBet)[td]
+
+                                                    #  8
+                                                    if (First + Second + Third + Fourth + Fifth + Sixth + Seventh + Eighth) not in list(listIIWorkWithAlphabet):
+                                                        listIIWorkWithAlphabet.append(First + Second + Third + Fourth + Fifth + Sixth + Seventh + Eighth)
+
+                                                    if progressesd == 10000:
+                                                        progressesd = 0
+                                                        progsws += 1
+                                                        print('#')
+
+                                                    progressesd += 1
 
 while True:
 
@@ -208,7 +212,6 @@ while True:
 
     if a:
 
-        # split input
         command = list(a.split())
 
         # commands
@@ -235,7 +238,7 @@ while True:
                     givWithOperatorsDo()
 
                 else:
-                    print('num')
+                    print('num | alphabet | runIntStr')
 
             else:
                 print('num | alphabet')
@@ -265,4 +268,4 @@ while True:
             quit()
 
         else:
-            print('print start >> alphabet | num | runIntStr | look >> !>NUMBER<! | !>TEXT<!')
+            print('print :=> start | look | exit >> alphabet | num | runIntStr >> !>NUMBER<! | !>TEXT<!')

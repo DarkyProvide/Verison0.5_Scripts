@@ -129,7 +129,6 @@ def givWithOperatorsDo():
             q = 0
 
             progressesd = 0
-            progsws = 0
 
             for q in range(len(list(alPhaBet))):
 
@@ -201,8 +200,7 @@ def givWithOperatorsDo():
 
                                                     if progressesd == 10000:
                                                         progressesd = 0
-                                                        progsws += 1
-                                                        print('#')
+                                                        print('#', end='')
 
                                                     progressesd += 1
 
@@ -257,7 +255,7 @@ while True:
 
             else:
 
-                print('Text < 5 letters')
+                print('Text < 9 letters')
 
         elif command[0] == 'progress':
 

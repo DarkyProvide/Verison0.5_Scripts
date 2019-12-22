@@ -17,10 +17,10 @@ listIIWorkWithNumbers = []
 
 listIIWorkWithAlphabet = []
 
-saveNums = r'C:\Users\Наталья\Desktop\Pac\saveNums.txt'
-saveAlphabet = r'C:\Users\Наталья\Desktop\Pac\saveAlphabet.txt'
-workNums = r'C:\Users\Наталья\Desktop\Pac\workNums.txt'
-workAlphabet = r'C:\Users\Наталья\Desktop\Pac\workAlphabet.txt'
+saveNums = r'C:\GitProgects\Verison0.5_Scripts\TwoPCRescui\Pac\saveNums.txt'
+saveAlphabet = r'C:\GitProgects\Verison0.5_Scripts\TwoPCRescui\Pac\saveAlphabet.txt'
+workNums = r'C:\GitProgects\Verison0.5_Scripts\TwoPCRescui\Pac\workNums.txt'
+workAlphabet = r'C:\GitProgects\Verison0.5_Scripts\TwoPCRescui\Pac\workAlphabet.txt'
 
 
 #  saves progress in file
@@ -30,10 +30,7 @@ def _savesold(fileName, writeTextInFile):
     wrt.writelines(str(writeTextInFile))
         
     wrt.close()
-    rd.close()
-    del rd
     del wrt
-    del rassa
 
 #  chacked text in save_file
 def _chack(fileName, text, save=True):

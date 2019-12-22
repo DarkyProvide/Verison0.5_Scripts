@@ -1,4 +1,5 @@
 import random as rad
+import itertools as itt
 
 '''
 Это первая часть - распределитель. В этой части вводятся слова,
@@ -93,7 +94,7 @@ def _podbor(number):
 
     ListNumbers.sort()
 
-    while zero != number:
+    for zero in range(int(number)):
 
         ListNumbers.append(max(list(ListNumbers)) + 1)
 
@@ -164,104 +165,17 @@ def _givWithOperatorsDo():
                         listIIWorkWithNumbers.append(a / 1)
                         
             _savesold(workNums, listIIWorkWithNumbers)
+
     #  text
     else:
 
         if alPhaBet:
 
-            q = 0
+            for i in itt.combinations_with_replacement(alPhaBet, 5):
 
-            progressesd = 0
+                listIIWorkWithAlphabet.append(i)
 
-            for q in range(len(list(alPhaBet))):
-
-                ac = 0
-
-                First = list(alPhaBet)[q]
-
-                for ac in range(len(list(alPhaBet))):
-
-                    e = 0
-
-                    Second = list(alPhaBet)[ac]
-
-                    #  2
-                    if (First + Second) not in list(listIIWorkWithAlphabet):
-                        listIIWorkWithAlphabet.append(First + Second)
-
-                    for e in range(len(list(alPhaBet))):
-
-                        d = 0
-
-                        Third = list(alPhaBet)[e]
-
-                        #  3
-                        if (First + Second + Third) not in list(listIIWorkWithAlphabet):
-                            listIIWorkWithAlphabet.append(First + Second + Third)
-
-                        for d in range(len(list(alPhaBet))):
-
-                            i = 0
-
-                            Fourth = list(alPhaBet)[d]
-
-                            #  4
-                            if (First + Second + Third + Fourth) not in list(listIIWorkWithAlphabet):
-                                listIIWorkWithAlphabet.append(First + Second + Third + Fourth)
-
-                            for i in range(len(list(alPhaBet))):
-
-                                Fifth = list(alPhaBet)[i]
-
-                                #  5
-                                if (First + Second + Third + Fourth + Fifth) not in list(listIIWorkWithAlphabet):
-                                    listIIWorkWithAlphabet.append(First + Second + Third + Fourth + Fifth)
-
-                                for tq in range(len(list(alPhaBet))):
-
-                                    Sixth = list(alPhaBet)[tq]
-
-                                    #  6
-                                    if (First + Second + Third + Fourth + Fifth + Sixth) not in list(listIIWorkWithAlphabet):
-                                        listIIWorkWithAlphabet.append(First + Second + Third + Fourth + Fifth + Sixth)
-
-                                        for ts in range(len(list(alPhaBet))):
-
-                                            Seventh = list(alPhaBet)[ts]
-
-                                            #  7
-                                            if (First + Second + Third + Fourth + Fifth + Sixth + Seventh) not in list(listIIWorkWithAlphabet):
-                                                listIIWorkWithAlphabet.append(First + Second + Third + Fourth + Fifth + Sixth + Seventh)
-
-                                                for td in range(len(list(alPhaBet))):
-
-                                                    Eighth = list(alPhaBet)[td]
-
-                                                    #  8
-                                                    if (First + Second + Third + Fourth + Fifth + Sixth + Seventh + Eighth) not in list(listIIWorkWithAlphabet):
-                                                        listIIWorkWithAlphabet.append(First + Second + Third + Fourth + Fifth + Sixth + Seventh + Eighth)
-
-                                                    if progressesd == 10000:
-                                                        progressesd = 0
-                                                        print('#', end='')
-
-                                                    progressesd += 1
-                                                    
-                                                    _savesold(workAlphabet, listIIWorkWithAlphabet)
-                                                    
-                                            _savesold(workAlphabet, listIIWorkWithAlphabet)
-                                            
-                                    _savesold(workAlphabet, listIIWorkWithAlphabet)
-                                    
-                                _savesold(workAlphabet, listIIWorkWithAlphabet)
-                               
-                            _savesold(workAlphabet, listIIWorkWithAlphabet)
-                            
-                        _savesold(workAlphabet, listIIWorkWithAlphabet)
-                        
-                    _savesold(workAlphabet, listIIWorkWithAlphabet)
-                   
-                _savesold(workAlphabet, listIIWorkWithAlphabet)
+            _savesold(workAlphabet, listIIWorkWithAlphabet)
                 
                 
 def goNum(col):
@@ -278,11 +192,11 @@ def runIntOrStr():
 
 def lookLet(see):
     
-    if see in list(listIIWorkWithAlphabet):
+    if see in listIIWorkWithAlphabet:
 
         print(see, 'in listIIWorkWithAlphabet')
 
-    elif see in list(alPhaBet):
+    elif see in alPhaBet:
 
         print(see, 'in alPhaBet')
       

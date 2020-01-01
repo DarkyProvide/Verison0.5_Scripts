@@ -1,15 +1,6 @@
 import random as rad
 import itertools as itt
 
-'''
-Это первая часть - распределитель. В этой части вводятся слова,
-а программа их обрабатывает на низком уровне (мелкая обработка
-событий) - простое сложение букв из ввода пользователя и рандомные
-математические вычисления над числами данные пользователем, и
-составленным споском-помошником. Буквы составляются со всеми
-возможными способами до максимума - 8 букв. 
-'''
-
 alPhaBet = []
 
 ListNumbers = [0]
@@ -23,38 +14,14 @@ saveAlphabet = r'C:\GitProgects\Verison0.5_Scripts\TwoPCRescui\Pac\saveAlphabet.
 workNums = r'C:\GitProgects\Verison0.5_Scripts\TwoPCRescui\Pac\workNums.txt'
 workAlphabet = r'C:\GitProgects\Verison0.5_Scripts\TwoPCRescui\Pac\workAlphabet.txt'
 
+#  saves
+def _saveprogress(fileName, textInp):
 
-#  saves progress in file
-def _savesold(fileName, writeTextInFile):
-
-    wrt = open(fileName, 'a')
-    wrt.writelines(str(writeTextInFile))
-        
-    wrt.close()
-    del wrt
-
-#  chacked text in save_file
-def _chack(fileName, text, save=True):
+    fileA = open(fileName, 'a')
     
-    rd = open(fileName, 'r')
-
-    rad = list(rd.readlines())
+    fileA.writelines(str(textInp))
     
-    text = list(text)
-    
-    listC = []
-    
-    for i in range(len(rad)):
-    
-        for d in range(len(text)):
-    
-            if rad[i] not in text[d]:
-                
-                listC.append(text[d])
-                
-    if save == True:
-        
-        _savesold(fileName, listC)
+    fileA.close()
 
 #  big random
 def _bigRandom(azartRandom):
@@ -78,10 +45,9 @@ def _bigRandom(azartRandom):
 
     return azartRandom
 
-# 1, 2, 3, 4, ... ====> (int)
-def _podbor(number):
-
-    zero = 0
+#  1, 2, 3, 4, ... ====> (int)
+def goNum(number):
+    
     lowSort = 0
 
     while lowSort != max(list(ListNumbers)):
@@ -89,7 +55,9 @@ def _podbor(number):
         if lowSort not in ListNumbers:
 
             ListNumbers.append(lowSort)
-
+            
+            _saveprogress(saveNums, (str(lowSort) + ','))
+        
         lowSort += 1
 
     ListNumbers.sort()
@@ -97,15 +65,13 @@ def _podbor(number):
     for zero in range(int(number)):
 
         ListNumbers.append(max(list(ListNumbers)) + 1)
-
-        zero += 1
         
-    _savesold(saveNums, ListNumbers)
-
-# a, b, c, d, ... !, @, #, $, %, ... ====> (str)
-def _speakAlphabet(speak):
-
-    for i in speak:
+        _saveprogress(saveNums, (str(max(list(ListNumbers)) + 1) + ','))
+    
+#  a, b, c, d, ... !, @, #, $, %, ... ====> (str)
+def goLet(text):
+    
+    for i in text:
 
         if i not in alPhaBet:
 
@@ -115,17 +81,17 @@ def _speakAlphabet(speak):
 
                     ListNumbers.append(int(i))
                     ListNumbers.sort()
+                    _saveprogress(saveNums, i)
 
 
             except ValueError or TypeError:
 
                 alPhaBet.append(i)
-                
-    _chack(saveAlphabet, alPhaBet)
+                _saveprogress(saveAlphabet, i)
 
-# Operators doing (int and str)
-def _givWithOperatorsDo():
-
+#  run II func on rundom
+def runIntOrStr():
+    
     azartRandom = _bigRandom(1)
 
     #  nums
@@ -143,14 +109,17 @@ def _givWithOperatorsDo():
             if randa == 0 and (a + b) not in list(listIIWorkWithNumbers):
 
                 listIIWorkWithNumbers.append(a + b)
+                _saveprogress(workNums, (str(a + b) + ','))
 
             elif randa == 1 and (a - b) not in list(listIIWorkWithNumbers):
 
                 listIIWorkWithNumbers.append(a - b)
+                _saveprogress(workNums, (str(a - b) + ','))
 
             elif randa == 2 and (a * b) not in list(listIIWorkWithNumbers):
 
                 listIIWorkWithNumbers.append(a * b)
+                _saveprogress(workNums, (str(a * b) + ','))
 
             elif randa == 3:
 
@@ -158,38 +127,27 @@ def _givWithOperatorsDo():
 
                     if (a / b) not in list(listIIWorkWithNumbers):
                         listIIWorkWithNumbers.append(a / b)
+                        _saveprogress(workNums, (str(a / b) + ','))
 
                 except ZeroDivisionError:
 
                     if (a / 1) not in list(listIIWorkWithNumbers):
                         listIIWorkWithNumbers.append(a / 1)
-                        
-            _savesold(workNums, listIIWorkWithNumbers)
+                        _saveprogress(workNums, (str(a / 1) + ','))
 
     #  text
     else:
 
         if alPhaBet:
-
-            for i in itt.combinations_with_replacement(alPhaBet, 5):
+            
+            qwer = rad.randint(2, 10)
+            
+            for i in itt.combinations_with_replacement(alPhaBet, qwer):
 
                 listIIWorkWithAlphabet.append(i)
+                _saveprogress(workAlphabet, i)
 
-            _savesold(workAlphabet, listIIWorkWithAlphabet)
-                
-                
-def goNum(col):
-    
-    _podbor(col)
-    
-def goLet(text):
-    
-    _speakAlphabet(text)
-
-def runIntOrStr():
-    
-    _givWithOperatorsDo()
-
+#  Chack func
 def lookLet(see):
     
     if see in listIIWorkWithAlphabet:
@@ -199,9 +157,113 @@ def lookLet(see):
     elif see in alPhaBet:
 
         print(see, 'in alPhaBet')
-      
-'''      
-#  Тест для работы с модулем
+       
+
+
+
+#  Проверка и сортировка всех данных при запуске
+#===============================================
+#  Работа с алфавитом
+#--------------------
+#  Обычный алфавит
+try:
+    readAlphabetSaves = open(saveAlphabet, 'r')
+    readLinesAlphabet = (readAlphabetSaves.readlines())[0]
+    for i in readLinesAlphabet:
+        alPhaBet.append(i)
+    readAlphabetSaves.close()
+except IndexError:
+    pass
+print('Progress starting:     |', end='')
+#  Переработанный программой алфавит
+try:
+    readAlphabetWork = open(workAlphabet, 'r')
+    readLinesAlphabetW = (readAlphabetWork.readlines())[0]
+    try:
+        allDalp = 0
+        i = 0
+        while readLinesAlphabetW[i] in list(readLinesAlphabetW):
+            if readLinesAlphabetW[i] == '(':
+                allDalp += 1
+            i += 1
+    except IndexError:
+        l = []
+        try:
+            p = 0
+            for t in range(allDalp):
+                e = ''
+                while readLinesAlphabetW[p] != ')':
+                    if readLinesAlphabetW[p + 1] != ',' and readLinesAlphabetW[p + 1] != ' ' and readLinesAlphabetW[p + 1] != '\'':
+                        if (readLinesAlphabetW[p + 1]) != ')':
+                            e = e + (readLinesAlphabetW[p + 1])
+                    p += 1
+                p += 1
+                l.append(tuple(e))
+                for i in l:
+                    listIIWorkWithAlphabet.append(i)
+        except IndexError:
+            pass
+    readAlphabetWork.close()
+except IndexError:
+    pass
+print('|', end='')
+
+
+#  Работа с цифрами
+#------------------
+#  Обычные числа
+try:
+    readNUMSSaves = open(saveNums, 'r')
+    readLinesNUMS = (readNUMSSaves.readlines())[0]
+    try:
+        i = 0
+        while readLinesNUMS[i] in list(readLinesNUMS):
+            dopListOne = []
+            while readLinesNUMS[i] != ',':
+                dopListOne.append((readLinesNUMS)[i])
+                i += 1
+            w = ''
+            for q in dopListOne:
+                w = w + q
+            ListNumbers.append(int(w))
+            ListNumbers.sort()
+            i += 1
+    except IndexError:
+        pass
+    readNUMSSaves.close()
+except IndexError:
+    pass
+print('|', end='')
+#  Переработанные программой числа
+try:#
+    readNUMSWorks = open(workNums, 'r')
+    readLinesNUMSW = (readNUMSWorks.readlines())[0]
+    try:
+        i = 0
+        while readLinesNUMSW[i] in list(readLinesNUMSW):
+            dopListTwo = []
+            while readLinesNUMSW[i] != ',':
+                dopListTwo.append((readLinesNUMSW)[i])
+                i += 1
+            w = ''
+            for q in dopListTwo:
+                w = w + q
+            try:
+                listIIWorkWithNumbers.append(int(w))
+            except ValueError:
+                listIIWorkWithNumbers.append(float(w))
+            i += 1
+    except IndexError:
+        pass
+    readNUMSWorks.close()
+except IndexError:
+    pass
+print('|', end='')
+#===============================================
+
+
+#  Мини код для тестинга
+
 while True:
 
     a = input('\n~>')
@@ -226,7 +288,19 @@ while True:
         
         lookLet(inp)
         
+        print(listIIWorkWithAlphabet)
+
     elif command == '4':
     
         runIntOrStr()
-'''
+        
+    elif command == '=':
+
+        print(ListNumbers)
+        print(alPhaBet)
+        print(listIIWorkWithNumbers)
+        print(listIIWorkWithAlphabet)
+        
+    elif command == '5':
+
+        quit()

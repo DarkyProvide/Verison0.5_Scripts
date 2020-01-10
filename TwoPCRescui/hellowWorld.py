@@ -284,14 +284,6 @@ while True:
         
     elif command == '3':
     
-        inp = input('==>')
-        
-        lookLet(inp)
-        
-        print(listIIWorkWithAlphabet)
-
-    elif command == '4':
-    
         runIntOrStr()
         
     elif command == '=':
@@ -301,6 +293,6 @@ while True:
         print(listIIWorkWithNumbers)
         print(listIIWorkWithAlphabet)
         
-    elif command == '5':
+    elif command == '4':
 
         quit()

@@ -11,11 +11,22 @@ def sort(d):
         del d[ind]
     return oup
 
-
+maxExpList = []
+dopLetList = []
 oup = dict()
-x = ''
 while True:
-    x = input()
+    xd = input('\n')
+    xdd = xd.split()
+    if len(xdd) > 1:
+        x = xdd
+    else:
+        x = xd
+    #  Error ====
+    if maxExpList:
+        if sort(oup) in maxExpList:
+        print(list(oup))
+        dopLetList.append({1 : oup})
+    #  ==========
     if x == 'quit':
         quit()
     for i in set(x):
@@ -23,6 +34,8 @@ while True:
             oup[i] = 0
     for i in list(x):
         oup[i] += 1
-    oup = sort(oup)
-    for i in oup.keys():
-        print(i, ":", oup[i])
+    #  Do sort in this block ------------------\
+    maxExpList.append(sort(oup))  # <===-------/
+    
+    print(maxExpList)
+    print(dopLetList)
